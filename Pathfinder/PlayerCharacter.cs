@@ -36,7 +36,6 @@ namespace Pathfinder
     {
         public string name { get; set; }
         public int bonus { get; set; }
-
     }
 
     class PlayerCharacter
@@ -46,6 +45,7 @@ namespace Pathfinder
         CharacterClass playerClass;
         CharacterRace race;
         AttributeScores attributeStats;
+        //int[] attributeStats;
         int maxHP;
         int currentHP;
         int armorClass;
@@ -61,7 +61,13 @@ namespace Pathfinder
 
         #region Constructors
 
-        PlayerCharacter(CharacterClass _playerClass, CharacterRace _race, Attributes _attributeStats,
+        
+        PlayerCharacter(CharacterClass _playerClass, CharacterRace _race)
+        {
+
+        }
+
+        PlayerCharacter(CharacterClass _playerClass, CharacterRace _race, AttributeScores _attributeStats,
                         int _maxHP, int _currentHP, int _armorClass, int _initiative, int _fortitudeSave,
                         int _willSave, int _reflexSave, int _baseAttackBonus, int _cmb, int _cmd)
         {
@@ -94,117 +100,117 @@ namespace Pathfinder
             Skill temp = new Skill();
 
             temp.name = "Acrobatics";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Appraise";
-            temp.bonusAttribute = Attributes.intelligence;
+            temp.bonusAttribute = (int)Attributes.intelligence;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Bluff";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Climb";
-            temp.bonusAttribute = Attributes.strength;
+            temp.bonusAttribute = (int)Attributes.strength;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Diplomacy";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Disable Device";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = true;
             list.Add(temp);
 
             temp.name = "Disguise";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Escape Artist";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Fly";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Handle Animal";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = true;
             list.Add(temp);
 
             temp.name = "Heal";
-            temp.bonusAttribute = Attributes.wisdom;
+            temp.bonusAttribute = (int)Attributes.wisdom;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Intimidate";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Linguistics";
-            temp.bonusAttribute = Attributes.intelligence;
+            temp.bonusAttribute = (int)Attributes.intelligence;
             temp.trained = true;
             list.Add(temp);
 
             temp.name = "Perception";
-            temp.bonusAttribute = Attributes.wisdom;
+            temp.bonusAttribute = (int)Attributes.wisdom;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Ride";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Sense Motive";
-            temp.bonusAttribute = Attributes.wisdom;
+            temp.bonusAttribute = (int)Attributes.wisdom;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Sleight Of Hand";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = true;
             list.Add(temp);
 
             temp.name = "Spellcraft";
-            temp.bonusAttribute = Attributes.intelligence;
+            temp.bonusAttribute = (int)Attributes.intelligence;
             temp.trained = true;
             list.Add(temp);
 
             temp.name = "Stealth";
-            temp.bonusAttribute = Attributes.dexterity;
+            temp.bonusAttribute = (int)Attributes.dexterity;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Survival";
-            temp.bonusAttribute = Attributes.wisdom;
+            temp.bonusAttribute = (int)Attributes.wisdom;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Swim";
-            temp.bonusAttribute = Attributes.strength;
+            temp.bonusAttribute = (int)Attributes.strength;
             temp.trained = false;
             list.Add(temp);
 
             temp.name = "Use Magical Device";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = true;
             list.Add(temp);
 
             temp.name = "Concentration";
-            temp.bonusAttribute = Attributes.charisma;
+            temp.bonusAttribute = (int)Attributes.charisma;
             temp.trained = false;
             list.Add(temp);
 
