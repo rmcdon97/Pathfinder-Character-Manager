@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
+using System.Threading.Tasks;
 
 namespace Pathfinder
 {
@@ -43,6 +44,7 @@ namespace Pathfinder
     {
         #region Variables
 
+        string name;
         CharacterClass playerClass;
         CharacterRace race;
         AttributeScores attributeStats;
@@ -58,12 +60,14 @@ namespace Pathfinder
         int cmb;
         int cmd;
 
-        private XDocument characterInfoXML;
-
         #endregion Variables
 
         #region Constructors
 
+        public PlayerCharacter()
+        {
+            
+        }
 
         PlayerCharacter(CharacterClass _playerClass, CharacterRace _race)
         {
@@ -92,6 +96,44 @@ namespace Pathfinder
         #endregion Constructors
 
         #region Functions
+
+        #region XML
+
+        /// <summary>
+        /// loads a character from an xml file
+        /// </summary>
+        /// <param name="filename"> xml file to be parsed </param>
+        public void LoadCharacterFromXML(string fileName)
+        {
+            //System.IO.StreamReader sr = new System.IO.StreamReader(fileName);
+            //XDocument document = new XDocument();
+            using (XmlReader reader = XmlReader.Create(fileName))
+            {
+                while (reader.Read())
+                {
+                    if(reader.IsStartElement())
+                    {
+                        switch (reader.Name)
+                        {
+                            case "name":
+                                if(reader.Read())
+                                    name = reader.Value.Trim();
+                                break;
+                            case "playerClass":
+                                string className = reader["name"];
+                                if (className != null)
+                                {
+                                    if (!playerClass.SetClassValuesFromXML(className))
+                                        throw new Exception("Error: Class values could not be loaded from the xml file");
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion XML
 
         /// <summary>
         /// Gets a list of all skills
@@ -220,39 +262,6 @@ namespace Pathfinder
             return list;
         }
 
-
-        /// <summary>
-        /// Reads character information along with all class and race information from an xml file
-        /// Sends each individual class/race it's own XElement to parse
-        /// </summary>
-        /// <param name="filePath"> XML file where character is saved </param>
-        public void OpenOperationsFromXML(string filePathParam)
-        {
-            characterInfoXML = XDocument.Load(filePathParam);
-            XElement xmlTopNode = characterInfoXML.Element("Character");
-
-            //XElement setupOpElement = inspectionTopNode.Element("SetupOperations");
-            //foreach (XElement setupOpChildElement in setupOpElement.Elements("Operation"))
-            //{
-            //    //PrintToGUIMessagesDelegate(" found a setup element <operation>");
-            //    addOperation(null, setupOpChildElement, true);
-            //}
-
-
-            // iterate through each 'Thread' node
-            foreach (XElement opearationThread in inspectionTopNode.Elements("OperationThread"))
-            {
-                //PrintToGUIMessagesDelegate(" found a element <operation thread>");
-                foreach (XElement operationChild in opearationThread.Elements("Operation"))
-                {
-                    //PrintToGUIMessagesDelegate(" found a regular op element <operation>");
-                    addOperation(null, operationChild, false);
-                }
-
-            } // end of foreach list
-
-            PrintToGUIMessagesDelegate("OpenOperationsFromXML() :: Opened operations from XML file " + filePathParam);
-        }
         #endregion Functions
     }
 }

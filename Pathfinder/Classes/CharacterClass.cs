@@ -35,9 +35,9 @@ namespace Pathfinder
 
         #region Functions
 
-        private void SetClassValuesFromXML(string filepath)
+        public bool SetClassValuesFromXML(string classType)
         {
-            
+            return true; 
         }
 
         #endregion Functions

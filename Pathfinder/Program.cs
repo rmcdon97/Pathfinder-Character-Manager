@@ -31,19 +31,7 @@ namespace Pathfinder
     {
 
     }
-
-
-    class CharacterRace
-    {
-        private string raceName;
-        private int[] statBonus;
-
-        CharacterRace(string _raceName, int[] _statBonus)
-        {
-            raceName = _raceName;
-            statBonus = _statBonus;
-        }
-    }
+    
 
     
 }
