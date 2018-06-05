@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using System.Threading.Tasks;
 
 namespace Pathfinder
@@ -42,6 +44,7 @@ namespace Pathfinder
     {
         #region Variables
 
+        string name;
         CharacterClass playerClass;
         CharacterRace race;
         AttributeScores attributeStats;
@@ -61,7 +64,11 @@ namespace Pathfinder
 
         #region Constructors
 
-        
+        public PlayerCharacter()
+        {
+            
+        }
+
         PlayerCharacter(CharacterClass _playerClass, CharacterRace _race)
         {
 
@@ -89,6 +96,44 @@ namespace Pathfinder
         #endregion Constructors
 
         #region Functions
+
+        #region XML
+
+        /// <summary>
+        /// loads a character from an xml file
+        /// </summary>
+        /// <param name="filename"> xml file to be parsed </param>
+        public void LoadCharacterFromXML(string fileName)
+        {
+            //System.IO.StreamReader sr = new System.IO.StreamReader(fileName);
+            //XDocument document = new XDocument();
+            using (XmlReader reader = XmlReader.Create(fileName))
+            {
+                while (reader.Read())
+                {
+                    if(reader.IsStartElement())
+                    {
+                        switch (reader.Name)
+                        {
+                            case "name":
+                                if(reader.Read())
+                                    name = reader.Value.Trim();
+                                break;
+                            case "playerClass":
+                                string className = reader["name"];
+                                if (className != null)
+                                {
+                                    if (!playerClass.SetClassValuesFromXML(className))
+                                        throw new Exception("Error: Class values could not be loaded from the xml file");
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion XML
 
         /// <summary>
         /// Gets a list of all skills
