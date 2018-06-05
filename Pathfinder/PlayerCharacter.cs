@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Pathfinder
 {
@@ -57,11 +58,13 @@ namespace Pathfinder
         int cmb;
         int cmd;
 
+        private XDocument characterInfoXML;
+
         #endregion Variables
 
         #region Constructors
 
-        
+
         PlayerCharacter(CharacterClass _playerClass, CharacterRace _race)
         {
 
@@ -217,6 +220,39 @@ namespace Pathfinder
             return list;
         }
 
+
+        /// <summary>
+        /// Reads character information along with all class and race information from an xml file
+        /// Sends each individual class/race it's own XElement to parse
+        /// </summary>
+        /// <param name="filePath"> XML file where character is saved </param>
+        public void OpenOperationsFromXML(string filePathParam)
+        {
+            characterInfoXML = XDocument.Load(filePathParam);
+            XElement xmlTopNode = characterInfoXML.Element("Character");
+
+            //XElement setupOpElement = inspectionTopNode.Element("SetupOperations");
+            //foreach (XElement setupOpChildElement in setupOpElement.Elements("Operation"))
+            //{
+            //    //PrintToGUIMessagesDelegate(" found a setup element <operation>");
+            //    addOperation(null, setupOpChildElement, true);
+            //}
+
+
+            // iterate through each 'Thread' node
+            foreach (XElement opearationThread in inspectionTopNode.Elements("OperationThread"))
+            {
+                //PrintToGUIMessagesDelegate(" found a element <operation thread>");
+                foreach (XElement operationChild in opearationThread.Elements("Operation"))
+                {
+                    //PrintToGUIMessagesDelegate(" found a regular op element <operation>");
+                    addOperation(null, operationChild, false);
+                }
+
+            } // end of foreach list
+
+            PrintToGUIMessagesDelegate("OpenOperationsFromXML() :: Opened operations from XML file " + filePathParam);
+        }
         #endregion Functions
     }
 }
