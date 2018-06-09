@@ -74,8 +74,8 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1345, 26);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1883, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,49 +86,48 @@
             this.loadToolStripMenuItem,
             this.newCharacterToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(56, 34);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
+            this.saveToolStripMenuItem.Text = "Save As";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // newCharacterToolStripMenuItem
             // 
             this.newCharacterToolStripMenuItem.Name = "newCharacterToolStripMenuItem";
-            this.newCharacterToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.newCharacterToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
             this.newCharacterToolStripMenuItem.Text = "New Character";
+            this.newCharacterToolStripMenuItem.Click += new System.EventHandler(this.newCharacterToolStripMenuItem_Click);
             // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.inGameTab);
             this.TabControl.Controls.Add(this.characterEditorTab);
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControl.Location = new System.Drawing.Point(0, 26);
-            this.TabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TabControl.Location = new System.Drawing.Point(0, 36);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1345, 862);
+            this.TabControl.Size = new System.Drawing.Size(1883, 1207);
             this.TabControl.TabIndex = 1;
             // 
             // inGameTab
             // 
             this.inGameTab.Controls.Add(this.kineticistPanel);
-            this.inGameTab.Location = new System.Drawing.Point(4, 25);
-            this.inGameTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.inGameTab.Location = new System.Drawing.Point(4, 33);
             this.inGameTab.Name = "inGameTab";
-            this.inGameTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.inGameTab.Size = new System.Drawing.Size(1337, 833);
+            this.inGameTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.inGameTab.Size = new System.Drawing.Size(1875, 1170);
             this.inGameTab.TabIndex = 0;
             this.inGameTab.Text = "In-game";
             this.inGameTab.UseVisualStyleBackColor = true;
@@ -138,10 +137,9 @@
             this.kineticistPanel.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.kineticistPanel.Controls.Add(this.kineticistHealthPanel);
             this.kineticistPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.kineticistPanel.Location = new System.Drawing.Point(2, 2);
-            this.kineticistPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kineticistPanel.Location = new System.Drawing.Point(3, 3);
             this.kineticistPanel.Name = "kineticistPanel";
-            this.kineticistPanel.Size = new System.Drawing.Size(1333, 829);
+            this.kineticistPanel.Size = new System.Drawing.Size(1869, 1164);
             this.kineticistPanel.TabIndex = 0;
             // 
             // kineticistHealthPanel
@@ -160,10 +158,9 @@
             this.kineticistHealthPanel.Controls.Add(this.label6);
             this.kineticistHealthPanel.Controls.Add(this.label5);
             this.kineticistHealthPanel.Controls.Add(this.label3);
-            this.kineticistHealthPanel.Location = new System.Drawing.Point(14, 15);
-            this.kineticistHealthPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kineticistHealthPanel.Location = new System.Drawing.Point(20, 21);
             this.kineticistHealthPanel.Name = "kineticistHealthPanel";
-            this.kineticistHealthPanel.Size = new System.Drawing.Size(409, 273);
+            this.kineticistHealthPanel.Size = new System.Drawing.Size(572, 381);
             this.kineticistHealthPanel.TabIndex = 0;
             // 
             // label4
@@ -174,10 +171,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(15, 19);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(21, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 32);
+            this.label4.Size = new System.Drawing.Size(140, 41);
             this.label4.TabIndex = 12;
             this.label4.Text = "Max HP:";
             // 
@@ -190,11 +186,10 @@
             this.nonLethalLabel.BackColor = System.Drawing.Color.Salmon;
             this.nonLethalLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nonLethalLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nonLethalLabel.Location = new System.Drawing.Point(251, 144);
-            this.nonLethalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.nonLethalLabel.MinimumSize = new System.Drawing.Size(54, 2);
+            this.nonLethalLabel.Location = new System.Drawing.Point(351, 202);
+            this.nonLethalLabel.MinimumSize = new System.Drawing.Size(75, 2);
             this.nonLethalLabel.Name = "nonLethalLabel";
-            this.nonLethalLabel.Size = new System.Drawing.Size(54, 41);
+            this.nonLethalLabel.Size = new System.Drawing.Size(75, 56);
             this.nonLethalLabel.TabIndex = 11;
             this.nonLethalLabel.Text = "0";
             this.nonLethalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,11 +203,10 @@
             this.maxHpLabel.BackColor = System.Drawing.Color.Salmon;
             this.maxHpLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.maxHpLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maxHpLabel.Location = new System.Drawing.Point(122, 11);
-            this.maxHpLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.maxHpLabel.MinimumSize = new System.Drawing.Size(54, 2);
+            this.maxHpLabel.Location = new System.Drawing.Point(171, 15);
+            this.maxHpLabel.MinimumSize = new System.Drawing.Size(75, 2);
             this.maxHpLabel.Name = "maxHpLabel";
-            this.maxHpLabel.Size = new System.Drawing.Size(59, 41);
+            this.maxHpLabel.Size = new System.Drawing.Size(81, 56);
             this.maxHpLabel.TabIndex = 10;
             this.maxHpLabel.Text = "25";
             this.maxHpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -226,11 +220,10 @@
             this.currentBurnLabel.BackColor = System.Drawing.Color.Salmon;
             this.currentBurnLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.currentBurnLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentBurnLabel.Location = new System.Drawing.Point(251, 209);
-            this.currentBurnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.currentBurnLabel.MinimumSize = new System.Drawing.Size(54, 2);
+            this.currentBurnLabel.Location = new System.Drawing.Point(351, 293);
+            this.currentBurnLabel.MinimumSize = new System.Drawing.Size(75, 2);
             this.currentBurnLabel.Name = "currentBurnLabel";
-            this.currentBurnLabel.Size = new System.Drawing.Size(54, 41);
+            this.currentBurnLabel.Size = new System.Drawing.Size(75, 56);
             this.currentBurnLabel.TabIndex = 9;
             this.currentBurnLabel.Text = "0";
             this.currentBurnLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -244,11 +237,10 @@
             this.currentHPLabel.BackColor = System.Drawing.Color.Salmon;
             this.currentHPLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.currentHPLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentHPLabel.Location = new System.Drawing.Point(251, 79);
-            this.currentHPLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.currentHPLabel.MinimumSize = new System.Drawing.Size(54, 2);
+            this.currentHPLabel.Location = new System.Drawing.Point(351, 111);
+            this.currentHPLabel.MinimumSize = new System.Drawing.Size(75, 2);
             this.currentHPLabel.Name = "currentHPLabel";
-            this.currentHPLabel.Size = new System.Drawing.Size(59, 41);
+            this.currentHPLabel.Size = new System.Drawing.Size(81, 56);
             this.currentHPLabel.TabIndex = 8;
             this.currentHPLabel.Text = "25";
             this.currentHPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -259,10 +251,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentBurnUp.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentBurnUp.Location = new System.Drawing.Point(311, 204);
-            this.currentBurnUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currentBurnUp.Location = new System.Drawing.Point(435, 286);
             this.currentBurnUp.Name = "currentBurnUp";
-            this.currentBurnUp.Size = new System.Drawing.Size(69, 48);
+            this.currentBurnUp.Size = new System.Drawing.Size(97, 67);
             this.currentBurnUp.TabIndex = 7;
             this.currentBurnUp.Text = "+";
             this.currentBurnUp.UseVisualStyleBackColor = true;
@@ -273,10 +264,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentBurnDown.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentBurnDown.Location = new System.Drawing.Point(177, 204);
-            this.currentBurnDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currentBurnDown.Location = new System.Drawing.Point(248, 286);
             this.currentBurnDown.Name = "currentBurnDown";
-            this.currentBurnDown.Size = new System.Drawing.Size(69, 48);
+            this.currentBurnDown.Size = new System.Drawing.Size(97, 67);
             this.currentBurnDown.TabIndex = 6;
             this.currentBurnDown.Text = "-";
             this.currentBurnDown.UseVisualStyleBackColor = true;
@@ -287,10 +277,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentHpUp.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentHpUp.Location = new System.Drawing.Point(311, 75);
-            this.currentHpUp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currentHpUp.Location = new System.Drawing.Point(435, 105);
             this.currentHpUp.Name = "currentHpUp";
-            this.currentHpUp.Size = new System.Drawing.Size(69, 48);
+            this.currentHpUp.Size = new System.Drawing.Size(97, 67);
             this.currentHpUp.TabIndex = 5;
             this.currentHpUp.Text = "+";
             this.currentHpUp.UseVisualStyleBackColor = true;
@@ -301,10 +290,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.currentHpDown.Font = new System.Drawing.Font("Franklin Gothic Medium", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentHpDown.Location = new System.Drawing.Point(177, 75);
-            this.currentHpDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.currentHpDown.Location = new System.Drawing.Point(248, 105);
             this.currentHpDown.Name = "currentHpDown";
-            this.currentHpDown.Size = new System.Drawing.Size(69, 48);
+            this.currentHpDown.Size = new System.Drawing.Size(97, 67);
             this.currentHpDown.TabIndex = 4;
             this.currentHpDown.Text = "-";
             this.currentHpDown.UseVisualStyleBackColor = true;
@@ -316,10 +304,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 209);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(21, 293);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 32);
+            this.label6.Size = new System.Drawing.Size(215, 41);
             this.label6.TabIndex = 3;
             this.label6.Text = "Current burn:";
             // 
@@ -330,10 +317,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 144);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(21, 202);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(226, 32);
+            this.label5.Size = new System.Drawing.Size(312, 41);
             this.label5.TabIndex = 2;
             this.label5.Text = "Non-lethal damage:";
             // 
@@ -344,10 +330,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 81);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(21, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 32);
+            this.label3.Size = new System.Drawing.Size(189, 41);
             this.label3.TabIndex = 0;
             this.label3.Text = "Current HP:";
             // 
@@ -355,11 +340,10 @@
             // 
             this.characterEditorTab.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.characterEditorTab.Controls.Add(this.BasicCharacterDetailsPanel);
-            this.characterEditorTab.Location = new System.Drawing.Point(4, 25);
-            this.characterEditorTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.characterEditorTab.Location = new System.Drawing.Point(4, 33);
             this.characterEditorTab.Name = "characterEditorTab";
-            this.characterEditorTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.characterEditorTab.Size = new System.Drawing.Size(1337, 833);
+            this.characterEditorTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.characterEditorTab.Size = new System.Drawing.Size(1875, 1170);
             this.characterEditorTab.TabIndex = 1;
             this.characterEditorTab.Text = "Character Editor";
             // 
@@ -373,30 +357,27 @@
             this.BasicCharacterDetailsPanel.Controls.Add(this.label1);
             this.BasicCharacterDetailsPanel.Controls.Add(this.CharacterName);
             this.BasicCharacterDetailsPanel.Controls.Add(this.textBox1);
-            this.BasicCharacterDetailsPanel.Location = new System.Drawing.Point(14, 14);
-            this.BasicCharacterDetailsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BasicCharacterDetailsPanel.Location = new System.Drawing.Point(20, 20);
             this.BasicCharacterDetailsPanel.Name = "BasicCharacterDetailsPanel";
-            this.BasicCharacterDetailsPanel.Size = new System.Drawing.Size(406, 185);
+            this.BasicCharacterDetailsPanel.Size = new System.Drawing.Size(568, 258);
             this.BasicCharacterDetailsPanel.TabIndex = 1;
             // 
             // raceSelector
             // 
             this.raceSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.raceSelector.FormattingEnabled = true;
-            this.raceSelector.Location = new System.Drawing.Point(186, 121);
-            this.raceSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.raceSelector.Location = new System.Drawing.Point(260, 169);
             this.raceSelector.Name = "raceSelector";
-            this.raceSelector.Size = new System.Drawing.Size(191, 33);
+            this.raceSelector.Size = new System.Drawing.Size(266, 40);
             this.raceSelector.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(114, 126);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(160, 176);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 25);
+            this.label2.Size = new System.Drawing.Size(89, 32);
             this.label2.TabIndex = 4;
             this.label2.Text = "Race:";
             // 
@@ -404,20 +385,18 @@
             // 
             this.classSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.classSelector.FormattingEnabled = true;
-            this.classSelector.Location = new System.Drawing.Point(186, 77);
-            this.classSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.classSelector.Location = new System.Drawing.Point(260, 108);
             this.classSelector.Name = "classSelector";
-            this.classSelector.Size = new System.Drawing.Size(191, 33);
+            this.classSelector.Size = new System.Drawing.Size(266, 40);
             this.classSelector.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(114, 77);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(160, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 25);
+            this.label1.Size = new System.Drawing.Size(94, 32);
             this.label1.TabIndex = 2;
             this.label1.Text = "Class:";
             // 
@@ -425,31 +404,28 @@
             // 
             this.CharacterName.AutoSize = true;
             this.CharacterName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CharacterName.Location = new System.Drawing.Point(18, 31);
-            this.CharacterName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CharacterName.Location = new System.Drawing.Point(25, 43);
             this.CharacterName.Name = "CharacterName";
-            this.CharacterName.Size = new System.Drawing.Size(161, 25);
+            this.CharacterName.Size = new System.Drawing.Size(229, 32);
             this.CharacterName.TabIndex = 1;
             this.CharacterName.Text = "Character Name:";
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(186, 31);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(260, 43);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 30);
+            this.textBox1.Size = new System.Drawing.Size(266, 39);
             this.textBox1.TabIndex = 0;
             // 
             // CharacterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(168F, 168F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1345, 888);
+            this.ClientSize = new System.Drawing.Size(1883, 1243);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CharacterForm";
             this.Text = "Pathfinder Character Manager";
             this.Load += new System.EventHandler(this.CharacterForm_Load);

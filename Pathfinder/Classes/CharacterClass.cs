@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace Pathfinder
 {
+    public enum Classes
+    {
+        Kineticist
+    }
+
     public abstract class CharacterClass
     {
         #region Variables
@@ -39,6 +45,8 @@ namespace Pathfinder
         {
             return true; 
         }
+
+        public abstract XElement SetClassXMLInfo(XElement parentElement);
 
         #endregion Functions
     }

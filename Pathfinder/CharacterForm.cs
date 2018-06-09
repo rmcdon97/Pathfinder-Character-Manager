@@ -21,13 +21,12 @@ namespace Pathfinder
         public CharacterForm()
         {
             InitializeComponent();
-            character = new PlayerCharacter();
             //this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
         }
 
         private void CharacterForm_Load(object sender, EventArgs e)
         {
-
+            character = new PlayerCharacter();
         }
 
         /// <summary>
@@ -37,7 +36,15 @@ namespace Pathfinder
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.AddExtension = true;
+            saveFileDialog1.Filter = "XML Files|*.xml";
+            saveFileDialog1.Title = "Select Save Location";
 
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                character.SaveCharacterToXML(saveFileDialog1.FileName);
+            }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,11 +55,16 @@ namespace Pathfinder
 
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                character.LoadCharacterFromXML(openFileDialog1.FileName);
+                character.OpenCharacterFromXML(openFileDialog1.FileName);
                 //System.IO.StreamReader sr = new System.IO.StreamReader(openFileDialog1.FileName);
                 //MessageBox.Show(sr.ReadToEnd());
                 //sr.Close();
             }
+        }
+
+        private void newCharacterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            character = new PlayerCharacter();
         }
     }
 }
