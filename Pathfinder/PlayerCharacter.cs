@@ -38,18 +38,21 @@ namespace Pathfinder
     {
         public string name { get; set; }
         public int bonus { get; set; }
+        public int ranks { get; set; }
     }
 
     class PlayerCharacter
     {
         #region Variables
 
+        public List<SkillValues> skills { get; set; }
+        public int level { get; set; }
+
         string name;
         CharacterClass playerClass;
         CharacterRace race;
         AttributeScores attributeStats;
         //int[] attributeStats;
-        List<SkillValues> skills;
         int maxHP;
         int currentHP;
         int armorClass;
@@ -128,6 +131,9 @@ namespace Pathfinder
             {
                 GetClassFromXML(currentClass);
             }
+
+            //XElement skillsTopNode = xmlTopNode.Element("Skills");
+            GetSkillInfoFromXML(xmlTopNode);
         }
 
         /// <summary>
@@ -188,6 +194,19 @@ namespace Pathfinder
             }
 
             playerClass = temp;
+        }
+
+        private void GetSkillInfoFromXML(XElement element)
+        {
+            SkillValues temp;
+            foreach (XElement currentSkill in element.Elements("Skills").Elements<XElement>())
+            {
+                temp = new SkillValues();
+                temp.name = currentSkill.Element("Name").Value;
+                temp.bonus = int.Parse(currentSkill.Element("Bonus").Value);
+                temp.ranks = int.Parse(currentSkill.Element("Ranks").Value);
+                skills.Add(temp);
+            }
         }
 
         /// <summary>
@@ -412,6 +431,19 @@ namespace Pathfinder
             return list;
         }
 
+        private void AssignDefaultSkillValues()
+        {
+            List<Skill> skillInfo = GetListOfSkills();
+            SkillValues temp;
+            foreach (Skill currentSkill in skillInfo)
+            {
+                temp = new SkillValues();
+                temp.name = currentSkill.name;
+                temp.bonus = 0;
+                temp.ranks = 0;
+                skills.Add(temp);
+            }
+        }
         #endregion Functions
     }
 }

@@ -6,28 +6,21 @@ using System.Xml;
 
 namespace Pathfinder
 {
-    public enum Races
-    {
-        Gnome
-    }
-
-    public abstract class CharacterRace
+    public class Gnome : CharacterRace
     {
         #region Variables
 
-        public string raceName { get; set; }
-        public int[] statBonus { get; set; }
 
         #endregion Variables
 
         #region Constructors
 
-        protected CharacterRace()
+        Gnome() : base()
         {
 
         }
 
-        CharacterRace(string _raceName, int[] _statBonus)
+        Gnome(string _raceName, int[] _statBonus)
         {
             raceName = _raceName;
             statBonus = _statBonus;
@@ -36,4 +29,3 @@ namespace Pathfinder
         #endregion Constructors
     }
 }
-
