@@ -12,8 +12,10 @@ namespace Pathfinder
 
         public int currentBurn { get; set; }
         public int maxBurn { get; set; }
-        
+
         #endregion Variables
+
+        #region Constructors
 
         public Kineticist() : base()
         {
@@ -22,8 +24,14 @@ namespace Pathfinder
 
         public Kineticist(XElement topNode) : base()
         {
+            className = "Kineticist";
+            hitDie = 8;
             GetKineticistXMLInfo(topNode);
         }
+
+        #endregion Constructors
+
+        #region XML
 
         void GetKineticistXMLInfo(XElement element)
         {
@@ -49,6 +57,26 @@ namespace Pathfinder
 
             parentElement.Add(nameElement);
             return parentElement;
+        }
+
+        #endregion XML
+
+        public override List<ClassAttributeInfo> GetClassAttributeInfo()
+        {
+            List<ClassAttributeInfo> classAttributes = new List<ClassAttributeInfo>();
+            ClassAttributeInfo temp = new ClassAttributeInfo();
+
+            temp.variableName = "currentBurn";
+            temp.type = "int";
+            temp.value = currentBurn.ToString();
+            classAttributes.Add(temp);
+
+            temp.variableName = "maxBurn";
+            temp.type = "int";
+            temp.value = maxBurn.ToString();
+            classAttributes.Add(temp);
+
+            return classAttributes;
         }
     }
 }

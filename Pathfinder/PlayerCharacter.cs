@@ -19,12 +19,12 @@ namespace Pathfinder
 
     struct AttributeScores
     {
-        int strength;
-        int dexterity;
-        int constitution;
-        int intelligence;
-        int wisdom;
-        int charisma;
+        public int strength;
+        public int dexterity;
+        public int constitution;
+        public int intelligence;
+        public int wisdom;
+        public int charisma;
     }
 
     public struct Skill
@@ -48,21 +48,24 @@ namespace Pathfinder
         public List<SkillValues> skills { get; set; }
         public int level { get; set; }
 
-        string name;
-        CharacterClass playerClass;
-        CharacterRace race;
-        AttributeScores attributeStats;
+        public string name;
+        public CharacterClass playerClass;
+        public CharacterRace race;
+        public AttributeScores attributeStats;
         //int[] attributeStats;
-        int maxHP;
-        int currentHP;
-        int armorClass;
-        int initiative;
-        int fortitudeSave;
-        int willSave;
-        int reflexSave;
-        int baseAttackBonus;
-        int cmb;
-        int cmd;
+        public int maxHP;
+        public int currentHP;
+        public int nonLethalDamage; //need to incorporate
+        public int armorClass;
+        public int flatFootedArmorClass;
+        public int touchArmorClass;
+        public int initiative;
+        public int fortitudeSave;
+        public int willSave;
+        public int reflexSave;
+        public int baseAttackBonus;
+        public int cmb;
+        public int cmd;
 
         private XDocument characterInfoXML;
 
@@ -72,17 +75,18 @@ namespace Pathfinder
 
         public PlayerCharacter()
         {
-            
+            skills = new List<SkillValues>();
+
         }
 
         PlayerCharacter(CharacterClass _playerClass, CharacterRace _race)
         {
-
+            
         }
 
         PlayerCharacter(CharacterClass _playerClass, CharacterRace _race, AttributeScores _attributeStats, List<SkillValues> _skills,
-                        int _maxHP, int _currentHP, int _armorClass, int _initiative, int _fortitudeSave,
-                        int _willSave, int _reflexSave, int _baseAttackBonus, int _cmb, int _cmd)
+                        int _maxHP, int _currentHP, int _armorClass, int _flatFootedArmorClass, int _TouchArmorClass, int _initiative,
+                        int _fortitudeSave, int _willSave, int _reflexSave, int _baseAttackBonus, int _cmb, int _cmd)
         {
             playerClass = _playerClass;
             race = _race;
@@ -91,6 +95,8 @@ namespace Pathfinder
             maxHP = _maxHP;
             currentHP = _currentHP;
             armorClass = _armorClass;
+            flatFootedArmorClass = _flatFootedArmorClass;
+            touchArmorClass = _TouchArmorClass;
             initiative = _initiative;
             fortitudeSave = _fortitudeSave;
             willSave = _willSave;
@@ -132,6 +138,11 @@ namespace Pathfinder
                 GetClassFromXML(currentClass);
             }
 
+            foreach (XElement currentRace in xmlTopNode.Elements("Race").Elements<XElement>())
+            {
+                GetRaceFromXML(currentRace);
+            }
+
             //XElement skillsTopNode = xmlTopNode.Element("Skills");
             GetSkillInfoFromXML(xmlTopNode);
         }
@@ -145,14 +156,34 @@ namespace Pathfinder
             //character name
             name = topNode.Element("Name").Value.ToString();
 
+            //level
+            level = int.Parse(topNode.Element("Level").Value);
+
+            //attributes
+            attributeStats.strength = int.Parse(topNode.Element("Strength").Value);
+            attributeStats.dexterity = int.Parse(topNode.Element("Dexterity").Value);
+            attributeStats.constitution = int.Parse(topNode.Element("Constitution").Value);
+            attributeStats.intelligence = int.Parse(topNode.Element("Intelligence").Value);
+            attributeStats.wisdom = int.Parse(topNode.Element("Wisdom").Value);
+            attributeStats.charisma = int.Parse(topNode.Element("Charisma").Value);
+
             //max HP
             maxHP = int.Parse(topNode.Element("MaxHP").Value);
 
             //current HP
             currentHP = int.Parse(topNode.Element("CurrentHP").Value);
 
+            //non-lethal damage
+            nonLethalDamage = int.Parse(topNode.Element("NonLethalDamage").Value);
+
             //armor class
             armorClass = int.Parse(topNode.Element("ArmorClass").Value);
+
+            //flat-footed armor class
+            flatFootedArmorClass = int.Parse(topNode.Element("FlatFootedAC").Value);
+
+            //touch armor class
+            touchArmorClass = int.Parse(topNode.Element("TouchAC").Value);
 
             //initiative
             initiative = int.Parse(topNode.Element("Initiative").Value);
@@ -194,6 +225,26 @@ namespace Pathfinder
             }
 
             playerClass = temp;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        private void GetRaceFromXML(XElement element)
+        {
+            CharacterRace temp;
+
+            if (element.Name.LocalName.Equals("Gnome"))
+            {
+                temp = new Gnome(element);
+            }
+            else
+            {
+                throw new Exception("Could not find race within XML");
+            }
+
+            race = temp;
         }
 
         private void GetSkillInfoFromXML(XElement element)
@@ -244,9 +295,13 @@ namespace Pathfinder
             XElement temp;
             temp = new XElement("Name", name);
             parentElement.Add(temp);
+            temp = new XElement("Level", level);
+            parentElement.Add(temp);
             temp = new XElement("MaxHP", maxHP);
             parentElement.Add(temp);
             temp = new XElement("CurrentHP", currentHP);
+            parentElement.Add(temp);
+            temp = new XElement("NonLethalDamage", nonLethalDamage);
             parentElement.Add(temp);
             temp = new XElement("ArmorClass", armorClass);
             parentElement.Add(temp);

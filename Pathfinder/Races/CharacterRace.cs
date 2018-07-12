@@ -17,6 +17,7 @@ namespace Pathfinder
 
         public string raceName { get; set; }
         public int[] statBonus { get; set; }
+        public int sizeMod { get; set; }
 
         #endregion Variables
 

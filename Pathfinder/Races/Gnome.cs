@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace Pathfinder
 {
@@ -17,13 +18,22 @@ namespace Pathfinder
 
         Gnome() : base()
         {
-
+            raceName = "Gnome";
+            sizeMod = 1;
         }
 
-        Gnome(string _raceName, int[] _statBonus)
+        public Gnome(XElement topNode) : base()
+        {
+            raceName = "Gnome";
+            sizeMod = 1;
+            //GetGnomeXMLInfo(topNode);
+        }
+
+        Gnome(string _raceName, int[] _statBonus, int _sizeMod)
         {
             raceName = _raceName;
             statBonus = _statBonus;
+            sizeMod = _sizeMod;
         }
 
         #endregion Constructors

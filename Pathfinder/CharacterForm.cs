@@ -15,6 +15,7 @@ namespace Pathfinder
         #region Variables
 
         PlayerCharacter character;
+        List<ClassAttributeInfo> classVariables;
 
         #endregion Variables
 
@@ -23,6 +24,7 @@ namespace Pathfinder
             InitializeComponent();
             classSelector.DataSource = Enum.GetValues(typeof(Classes));
             raceSelector.DataSource = Enum.GetValues(typeof(Races));
+            
             //this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
         }
 
@@ -63,7 +65,18 @@ namespace Pathfinder
                 //sr.Close();
             }
             InGame_DisplaySkillRanks();
-            Editing_DisplaySkillRanks();
+            InitializeFormOnCharacterLoad();
+        }
+
+        private void InitializeFormOnCharacterLoad()
+        {
+            maxHpLabel.Text = character.maxHP.ToString();
+            currentHPLabel.Text = character.currentHP.ToString();
+            nonLethalLabel.Text = character.nonLethalDamage.ToString();
+            ACLabel.Text = character.armorClass.ToString();
+            flatFootedLabel.Text = character.flatFootedArmorClass.ToString();
+            touchACLabel.Text = character.touchArmorClass.ToString();
+            //currentBurnLabel.DataBindings.Add(new Binding())
         }
 
         private void Editing_DisplaySkillRanks()
@@ -82,8 +95,10 @@ namespace Pathfinder
                 lbl.Text = skill.name;
                 skillRanksTable.Controls.Add(lbl);
 
-                lbl.Text = skill.bonus.ToString();
-                skillRanksTable.Controls.Add(lbl);
+                Label lbl2 = new Label();
+                lbl2.AutoSize = true;
+                lbl2.Text = skill.bonus.ToString();
+                skillRanksTable.Controls.Add(lbl2);
 
                 NumericUpDown numericUpDown = new NumericUpDown();
                 numericUpDown.SuspendLayout();
@@ -95,6 +110,9 @@ namespace Pathfinder
                 numericUpDown.ResumeLayout();
                 skillRanksTable.Controls.Add(numericUpDown);
             }
+            skillRanksTable.ResumeLayout();
+            skillRanksTable.Visible = true;
+            this.Cursor = Cursors.Default;
         }
 
         private void InGame_DisplaySkillRanks()
@@ -110,12 +128,17 @@ namespace Pathfinder
             {
                 Label lbl = new Label();
                 lbl.AutoSize = true;
-                lbl.Text = skill.name;
+                lbl.Text = skill.name.ToString();
                 InGameSkillRanksTable.Controls.Add(lbl);
 
-                lbl.Text = skill.bonus.ToString();
-                InGameSkillRanksTable.Controls.Add(lbl);
+                Label lbl2 = new Label();
+                lbl2.AutoSize = true;
+                lbl2.Text = skill.bonus.ToString();
+                InGameSkillRanksTable.Controls.Add(lbl2);
             }
+            InGameSkillRanksTable.ResumeLayout();
+            InGameSkillRanksTable.Visible = true;
+            this.Cursor = Cursors.Default;
         }
 
         private decimal RoundDown(decimal number)
@@ -125,6 +148,45 @@ namespace Pathfinder
             else
                 return number - (number % 1);
         }
+
+        private void CalculateAttackRoll(int roll)
+        {
+            int finalResult = roll;
+            finalResult += character.baseAttackBonus;
+            finalResult += character.race.sizeMod;
+
+            if (character.playerClass.className.Equals("Kineticist"))
+            {
+                finalResult += (within30ft.Checked) ? 1 : 0;
+                if (useKineticBlade.Checked)
+                    finalResult += (int)RoundDown(((decimal)character.attributeStats.strength - 10) / 2);
+                else
+                    finalResult += (int)RoundDown(((decimal)character.attributeStats.dexterity - 10) / 2);
+                if (int.Parse(currentBurnLabel.Text) > 0)
+                    finalResult++;
+            }
+
+            attackResultLabel.Text = finalResult.ToString();
+        }
+
+        private void CalculateDamageRoll(int roll)
+        {
+            int finalResult = roll;
+            if (int.Parse(attackDiceRollTB.Text) == 20)
+                finalResult *= 2;
+            finalResult += (int)RoundDown(((decimal)character.attributeStats.constitution - 10) / 2) / 2;
+
+            if (character.playerClass.className.Equals("Kineticist"))
+            {
+                finalResult += (within30ft.Checked) ? 1 : 0;
+                if (int.Parse(currentBurnLabel.Text) > 0)
+                    finalResult += 2;
+            }
+
+            damageResultLabel.Text = finalResult.ToString();
+        }
+
+        #region Form Actions
 
         private void newCharacterToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -176,6 +238,90 @@ namespace Pathfinder
             if (CHAScore.Value > 0)
             {
                 CHALabel.Text = ((int)RoundDown((CHAScore.Value - 10) / 2)).ToString();
+            }
+        }
+
+        private void currentHpUp_Click(object sender, EventArgs e)
+        {
+            character.currentHP++;
+            currentHPLabel.Text = character.currentHP.ToString();
+        }
+
+        private void currentHpDown_Click(object sender, EventArgs e)
+        {
+            character.currentHP--;
+            currentHPLabel.Text = character.currentHP.ToString();
+        }
+
+        private void currentBurnUp_Click(object sender, EventArgs e)
+        {
+            int tempCurrentBurn = int.Parse(currentBurnLabel.Text);
+            currentBurnLabel.Text = (tempCurrentBurn + 1).ToString();
+            int currentNonLethal = int.Parse(nonLethalLabel.Text);
+            nonLethalLabel.Text = (currentNonLethal + character.level).ToString();
+        }
+
+        private void editSkillsBtn_Click(object sender, EventArgs e)
+        {
+            Editing_DisplaySkillRanks();
+        }
+
+        private void attackResultLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void attackDiceRollTB_TextChanged(object sender, EventArgs e)
+        {
+            int roll;
+            if (int.TryParse(attackDiceRollTB.Text, out roll))
+            {
+                CalculateAttackRoll(roll);
+            }
+        }
+
+        #endregion Form Actions
+
+        private void within30ft_CheckedChanged(object sender, EventArgs e)
+        {
+            int roll;
+            if (int.TryParse(attackDiceRollTB.Text, out roll))
+            {
+                CalculateAttackRoll(roll);
+            }
+        }
+
+        private void useKineticBlade_CheckedChanged(object sender, EventArgs e)
+        {
+            int roll;
+            if (int.TryParse(attackDiceRollTB.Text, out roll))
+            {
+                CalculateAttackRoll(roll);
+            }
+        }
+
+        private void currentBurnDown_Click(object sender, EventArgs e)
+        {
+            int currentBurn = int.Parse(currentBurnLabel.Text);
+            if (currentBurn > 0)
+            {
+                currentBurnLabel.Text = (currentBurn - 1).ToString();
+                int currentNonLethal = int.Parse(nonLethalLabel.Text);
+                nonLethalLabel.Text = (currentNonLethal - character.level).ToString();
+            }
+        }
+
+        private void currentBurnLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void damageDiceRollTB_TextChanged(object sender, EventArgs e)
+        {
+            int roll;
+            if (int.TryParse(damageDiceRollTB.Text, out roll))
+            {
+                CalculateDamageRoll(roll);
             }
         }
     }

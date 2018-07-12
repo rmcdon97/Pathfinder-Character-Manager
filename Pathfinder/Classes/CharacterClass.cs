@@ -12,13 +12,20 @@ namespace Pathfinder
         Kineticist
     }
 
+    public struct ClassAttributeInfo
+    {
+        public string variableName { get; set; }
+        public string type { get; set; }
+        public string value { get; set; }
+    }
+
     public abstract class CharacterClass
     {
         #region Variables
 
         public string className { get; set; }
         int[] attributePriority; //lower value = highest priority
-        int hitDie;
+        public int hitDie;
         string classSkills; //comma-separated list of class skills (copy-paste from website)
 
         #endregion Variables
@@ -47,6 +54,8 @@ namespace Pathfinder
         }
 
         public abstract XElement SetClassXMLInfo(XElement parentElement);
+
+        public abstract List<ClassAttributeInfo> GetClassAttributeInfo();
 
         #endregion Functions
     }
