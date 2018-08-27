@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace Pathfinder
 {
@@ -56,6 +57,8 @@ namespace Pathfinder
         public abstract XElement SetClassXMLInfo(XElement parentElement);
 
         public abstract List<ClassAttributeInfo> GetClassAttributeInfo();
+
+        public abstract Control GetClassControl();
 
         #endregion Functions
     }

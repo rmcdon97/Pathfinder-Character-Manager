@@ -37,5 +37,18 @@ namespace Pathfinder
         }
 
         #endregion Constructors
+
+        #region XML
+
+        public override XElement SetRaceXMLInfo(XElement parentElement)
+        {
+            XElement nameElement = new XElement("Gnome");
+
+            parentElement.Add(nameElement);
+            return parentElement;
+        }
+
+        #endregion XML
+
     }
 }

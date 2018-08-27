@@ -76,12 +76,19 @@ namespace Pathfinder
 
         private void InitializeFormOnCharacterLoad()
         {
+            TabControl.TabPages[2].Controls.Add(character.classControl);
             maxHpLabel.Text = character.maxHP.ToString();
             currentHPLabel.Text = character.currentHP.ToString();
             nonLethalLabel.Text = character.nonLethalDamage.ToString();
             ACLabel.Text = character.armorClass.ToString();
             flatFootedLabel.Text = character.flatFootedArmorClass.ToString();
             touchACLabel.Text = character.touchArmorClass.ToString();
+            CMBLabel.Text = character.cmb.ToString();
+            CMDLabel.Text = character.cmd.ToString();
+            FortitudeSaveLabel.Text = character.fortitudeSave.ToString();
+            ReflexSaveLabel.Text = character.reflexSave.ToString();
+            WillSaveLabel.Text = character.willSave.ToString();
+            InitiativeLabel.Text = character.initiative.ToString();
             //needs function to handle class specific data
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Pathfinder
 {
@@ -50,6 +51,7 @@ namespace Pathfinder
 
         public string name;
         public CharacterClass playerClass;
+        public Control classControl;
         public CharacterRace race;
         public AttributeScores attributeStats;
         //int[] attributeStats;
@@ -145,6 +147,9 @@ namespace Pathfinder
 
             //XElement skillsTopNode = xmlTopNode.Element("Skills");
             GetSkillInfoFromXML(xmlTopNode);
+            
+            classControl = playerClass.GetClassControl();
+            classControl.Dock = DockStyle.Fill;
         }
 
         /// <summary>
@@ -280,6 +285,13 @@ namespace Pathfinder
 
             //add race specific info
             XElement raceInfoElement = new XElement("Race");
+            raceInfoElement = race.SetRaceXMLInfo(raceInfoElement);
+            saveTree.Root.Add(raceInfoElement);
+
+            //add skill info
+            XElement skillInfoElement = new XElement("Skills");
+            skillInfoElement = SetSkillXMLInfo(skillInfoElement);
+            saveTree.Root.Add(skillInfoElement);
 
             saveTree.Save(filepath);
         }
@@ -297,6 +309,18 @@ namespace Pathfinder
             parentElement.Add(temp);
             temp = new XElement("Level", level);
             parentElement.Add(temp);
+            temp = new XElement("Strength", attributeStats.strength);
+            parentElement.Add(temp);
+            temp = new XElement("Dexterity", attributeStats.dexterity);
+            parentElement.Add(temp);
+            temp = new XElement("Constitution", attributeStats.constitution);
+            parentElement.Add(temp);
+            temp = new XElement("Intelligence", attributeStats.intelligence);
+            parentElement.Add(temp);
+            temp = new XElement("Wisdom", attributeStats.wisdom);
+            parentElement.Add(temp);
+            temp = new XElement("Charisma", attributeStats.charisma);
+            parentElement.Add(temp);
             temp = new XElement("MaxHP", maxHP);
             parentElement.Add(temp);
             temp = new XElement("CurrentHP", currentHP);
@@ -304,6 +328,10 @@ namespace Pathfinder
             temp = new XElement("NonLethalDamage", nonLethalDamage);
             parentElement.Add(temp);
             temp = new XElement("ArmorClass", armorClass);
+            parentElement.Add(temp);
+            temp = new XElement("FlatFootedAC", flatFootedArmorClass);
+            parentElement.Add(temp);
+            temp = new XElement("TouchAC", touchArmorClass);
             parentElement.Add(temp);
             temp = new XElement("Initiative", initiative);
             parentElement.Add(temp);
@@ -323,6 +351,26 @@ namespace Pathfinder
             return parentElement;
         }
         
+        private XElement SetSkillXMLInfo(XElement parentElement)
+        {
+            XElement temp, tempChild;
+            foreach (SkillValues skill in skills)
+            {
+                temp = new XElement("Skill");
+                tempChild = new XElement("Name", skill.name);
+                temp.Add(tempChild);
+                tempChild = new XElement("Bonus", skill.bonus);
+                temp.Add(tempChild);
+                tempChild = new XElement("Ranks", skill.ranks);
+                temp.Add(tempChild);
+
+                parentElement.Add(temp);
+            }
+
+            return parentElement;
+        }
+
+
         ///// <summary>
         ///// loads a character from an xml file
         ///// </summary>

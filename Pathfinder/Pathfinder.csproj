@@ -52,6 +52,12 @@
       <DependentUpon>CharacterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\CharacterClass.cs" />
+    <Compile Include="Controls\KineticistControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\KineticistControl.Designer.cs">
+      <DependentUpon>KineticistControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Races\CharacterRace.cs" />
     <Compile Include="Classes\Kineticist.cs" />
     <Compile Include="PlayerCharacter.cs" />
@@ -60,6 +66,9 @@
     <Compile Include="Races\Gnome.cs" />
     <EmbeddedResource Include="CharacterForm.resx">
       <DependentUpon>CharacterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\KineticistControl.resx">
+      <DependentUpon>KineticistControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace Pathfinder
 {
@@ -77,6 +78,11 @@ namespace Pathfinder
             classAttributes.Add(temp);
 
             return classAttributes;
+        }
+
+        public override Control GetClassControl()
+        {
+            return new KineticistControl();
         }
     }
 }
